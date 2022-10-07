@@ -1,6 +1,7 @@
 #include <Wire.h>
 #include <MMA8453_n0m1.h>
 #include <SetupCalculations.h>
+#include <VCO555.h>
 
 MMA8453_n0m1 accel;
 
@@ -29,38 +30,6 @@ void setup() {
   //analogWrite(CVPin, 50);
   //accel.setI2CAddr(0x1D); //change your device address if necessary, default is 0x1C
   //accel.dataMode(true, 2); //enable highRes 10bit, 2g range [2g,4g,8g]
-  note1 = 73.42; //d2
-  note2 = calNoteF(note1, diatonicScaleSteps[1]);
-  note3 = calNoteF(note2, diatonicScaleSteps[2]);
-
-  cv1 = calCV(c, r1, r2, vcc, note1);
-  cv2 = calCV(c, r1, r2, vcc, note2);
-  cv3 = calCV(c, r1, r2, vcc, note3);
-
-  duty1 = cv2Duty(cv1, cvMax);
-  duty2 = cv2Duty(cv2, cvMax);
-  duty3 = cv2Duty(cv3, cvMax);
-  
-  Serial.print("n1: ");
-  Serial.print(note1);
-  Serial.print("  cv1: ");
-  Serial.print(cv1);
-  Serial.print("  d1: ");
-  Serial.println(duty1);
-
-  Serial.print("n2: ");
-  Serial.print(note2);
-  Serial.print("  cv2: ");
-  Serial.print(cv2);
-  Serial.print("  d2: ");
-  Serial.println(duty2);
-
-  Serial.print("n3: ");
-  Serial.print(note3);
-  Serial.print("  cv3: ");
-  Serial.print(cv3);
-  Serial.print("  d3: ");
-  Serial.println(duty3);
   
   
 }

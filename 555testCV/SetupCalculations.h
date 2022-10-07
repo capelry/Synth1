@@ -1,3 +1,6 @@
+#pragma once
+#include <cmath>
+
 float calCV(float c, float r1, float r2, float vcc, float freq);
 /*
  *  This functinon is used to calculate the control voltage to be applied to pin 5 of 555 chip for a specified frequency
