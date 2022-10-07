@@ -5,13 +5,15 @@ class VCO555
 {
     public:
 
+    int numNotes;
     float c, r1, r2;
 
-    VCO555(float capacitor, float resistor1, float resistor2)
+    VCO555(float capacitor, float resistor1, float resistor2, int numberNotes)
     {
         c = capacitor;
         r1 = resistor1;
         r2 = resistor2;
+        numNotes = numberNotes;
     }
 
     float calCV(float c, float r1, float r2, float vcc, float freq)
@@ -31,4 +33,16 @@ class VCO555
     {
         return refF * pow(2, (noteDistance / 12)); // http://techlib.com/reference/musical_note_frequencies.htm#:~:text=Starting%20at%20any%20note%20the,away%20from%20the%20starting%20note.
     }
+
+    
+   void buildScale(int scaleSteps[], int numSteps, float baseNoteFrequency)
+   /*
+   Builds array of frequency values for the given scale
+   */
+   {
+        for (int i = 0; i < numNotes; i++)
+        {
+            
+        }
+   }
 };

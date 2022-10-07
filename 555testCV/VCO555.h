@@ -12,7 +12,8 @@ class VCO555
     */
    public:
    float c, r1, r2;
-   VCO555(float capacitor, float resistor1, float resistor2);
+   VCO555(float capacitor, float resistor1, float resistor2, int numberNotes);
    float calCV(float c, float r1, float r2, float vcc, float freq);
    float calNoteF(float refF, float noteDistance);
+   void buildScale(int scaleSteps[], int numSteps, float baseNoteFrequency);
 };
