@@ -122,7 +122,7 @@ void loop() {
 
 float calCV(float c, float r1, float r2, float vcc, float freq)
 /*
- *  This functinon is used to calculate the frequency corresponding to a control voltage applied to pin 5 of 555 chip
+ *  This functinon is used to calculate the control voltage to be applied to pin 5 of 555 chip for a specified frequency
  */
 {
   float a = (1/freq - (c * r2 * log(2))) / (c * (r1+r2));
