@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <MMA8453_n0m1.h>
+#include <SetupCalculations.h>
 
 MMA8453_n0m1 accel;
 
@@ -120,25 +121,4 @@ void loop() {
   
 }
 
-float calCV(float c, float r1, float r2, float vcc, float freq)
-/*
- *  This functinon is used to calculate the control voltage to be applied to pin 5 of 555 chip for a specified frequency
- */
-{
-  float a = (1/freq - (c * r2 * log(2))) / (c * (r1+r2));
-  return 2*vcc*(exp(a) - 1) / (2 * exp(a) - 1); // https://electronics.stackexchange.com/questions/101530/what-is-the-equation-for-the-555-timer-control-voltage see correction answer
-}
 
-float calNoteF(float refF, float noteDistance)
-/*
- * Calculates the frequency of desired note from reference note.
- * noteDistance: number of semitones the note is from reference note
- */
- {
-  return refF * pow(2, (noteDistance / 12)); // http://techlib.com/reference/musical_note_frequencies.htm#:~:text=Starting%20at%20any%20note%20the,away%20from%20the%20starting%20note.
- }
-
- int cv2Duty(float cv, float cvMax)
- {
-  return round(cv/cvMax) * 255; // 255 max value for pwm for some reason
- }
